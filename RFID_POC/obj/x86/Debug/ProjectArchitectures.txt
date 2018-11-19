@@ -1,0 +1,2 @@
+C:\Users\Mark\Source\Repos\RFID_POC\Mfrc522Lib\Mfrc522Lib.csproj;x86
+C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\RFID_POC.csproj;x86
