@@ -28,14 +28,49 @@ namespace RFID_POC
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private const int RED_LED_PIN = 5;
+        private const int GREEN_LED_PIN = 12;
+        private GpioPin redPin;
+        private GpioPin greenPin;
+        private GpioPinValue pinValue;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            InitGPIO();
 
             InitRC522Async();
             //MainAsync().GetAwaiter().GetResult();
         }
 
+        private void InitGPIO()
+        {
+            var gpio = GpioController.GetDefault();
+
+            // Show an error if there is no GPIO controller
+            if (gpio == null)
+            {
+                redPin = null;
+                txtCardNumber.Text = "There is no GPIO controller on this device.";
+                return;
+            }
+
+            // red LED
+            redPin = gpio.OpenPin(RED_LED_PIN);
+            redPin.SetDriveMode(GpioPinDriveMode.Output);
+            pinValue = GpioPinValue.High;
+            redPin.Write(pinValue);
+
+            // green LED
+            greenPin = gpio.OpenPin(GREEN_LED_PIN);
+            greenPin.SetDriveMode(GpioPinDriveMode.Output);
+            pinValue = GpioPinValue.Low;
+            greenPin.Write(pinValue);
+
+            txtCardNumber.Text = "GPIO pin initialized correctly.";
+
+        }
 
         public async void InitRC522Async()
         {
@@ -60,42 +95,45 @@ namespace RFID_POC
                     var uid = mfrc.ReadUid();
                     if (uid.IsValid)
                     {
-                        mfrc.HaltTag();
+                        if (uid.ToString() == "28723002")
+                        {
+                            setGreenLight();
+                        }
+                        else
+                        {
+                            setRedLight();
+                        }
                         txtCardNumber.Text = uid.ToString();
-                        break;
+                        //pinValue = GpioPinValue.Low;
+                        //redPin.Write(pinValue);
+                        //pinValue = GpioPinValue.High;
+                        //greenPin.Write(pinValue);
                     }
+                    mfrc.HaltTag();
                 }
             }
         }
 
-
-
-        static async Task MainAsync()
+        private void setRedLight()
         {
-            var mfrc = new Mfrc522();
-            await mfrc.InitIO();
+            resetLights();
 
-            var uid = mfrc.ReadUid();
-            var mainPage = new MainPage();
-            string txt_Result = "";
-            foreach (byte byt in uid.FullUid)
-            {
-                txt_Result = txt_Result + byt.ToString("x2");
-                mainPage.txtCardNumber.Text = txt_Result;
-            }
-            mfrc.HaltTag();
+            redPin.Write(GpioPinValue.High);
+            greenPin.Write(GpioPinValue.Low);
+        }
 
-            //while (true)
-            //{
-            //    if (mfrc.IsTagPresent())
-            //    {
-            //        var uid = mfrc.ReadUid();
-            //        txtCardNumber.Text = uid.ToString();
+        private void setGreenLight()
+        {
+            resetLights();
 
-            //        mfrc.HaltTag();
-            //    }
+            redPin.Write(GpioPinValue.Low);
+            greenPin.Write(GpioPinValue.High);
+        }
 
-            //}
+        private void resetLights()
+        {
+            redPin.Write(GpioPinValue.Low);
+            greenPin.Write(GpioPinValue.Low);
         }
     }
 }
