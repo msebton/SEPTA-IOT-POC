@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs/RFID_POC/v15/Server/sqlite3
+/Mfrc522Lib/bin/Debug
+/Mfrc522Lib/obj/Debug

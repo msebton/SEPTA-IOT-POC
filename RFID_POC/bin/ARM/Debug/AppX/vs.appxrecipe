@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>F7564213968BB3E38A82B2DD2013172CECC607B00177F4895C88F74352D17026</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>4B79D73380DF4C471414F615FE153901C33924411CC3C22D508AC771F9EBA657</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>b617fb33-d01c-494f-b850-815f1127a6cb_1.0.0.0_arm__73zwdfx56gv16</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>b617fb33-d01c-494f-b850-815f1127a6cb_73zwdfx56gv16!App</RegisteredUserModeAppID>
     <RegisteredPackageID>b617fb33-d01c-494f-b850-815f1127a6cb</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-19T22:39:36.678</Modified>
+      <Modified>2018-11-27T18:12:08.304</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\RFID_POC.exe">
       <PackagePath>entrypoint\RFID_POC.exe</PackagePath>
-      <Modified>2018-11-19T22:39:34.661</Modified>
+      <Modified>2018-11-27T18:12:07.154</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -494,9 +494,9 @@
       <PackagePath>Mfrc522Lib.dll</PackagePath>
       <Modified>2018-11-17T02:58:52.466</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2018-11-15T19:43:02.687</Modified>
+    <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Assets\septa_car.png">
+      <PackagePath>Assets\septa_car.png</PackagePath>
+      <Modified>2018-11-26T20:56:02.052</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -532,17 +532,21 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2018-11-14T15:57:57.710</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2018-11-15T19:43:02.687</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\RFID_POC.xr.xml">
       <PackagePath>RFID_POC.xr.xml</PackagePath>
-      <Modified>2018-11-17T02:23:10.455</Modified>
+      <Modified>2018-11-27T18:03:15.689</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-11-19T22:39:34.219</Modified>
+      <Modified>2018-11-27T18:12:06.914</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-11-19T22:39:34.221</Modified>
+      <Modified>2018-11-27T18:12:06.915</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
@@ -554,11 +558,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2018-11-17T00:20:22.738</Modified>
+      <Modified>2018-11-26T20:56:58.655</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\Core\RFID_POC.exe">
       <PackagePath>RFID_POC.exe</PackagePath>
-      <Modified>2018-11-19T22:39:36.670</Modified>
+      <Modified>2018-11-27T18:12:08.299</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

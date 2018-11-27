@@ -76,17 +76,10 @@ namespace RFID_POC
         {
 
             var mfrc = new Mfrc522();
-            await mfrc.InitIO();
+            var redBrush = new SolidColorBrush(Windows.UI.Colors.Red);
+            var greenBrush = new SolidColorBrush(Windows.UI.Colors.Green);
 
-            //var uid = mfrc.ReadUid();
-            ////var mainPage = new MainPage();
-            //string txt_Result = "";
-            //foreach (byte byt in uid.FullUid)
-            //{
-            //    txt_Result = txt_Result + byt.ToString("x2");
-            //    txtCardNumber.Text = txt_Result;
-            //}
-            //mfrc.HaltTag();
+            await mfrc.InitIO();
 
             while (true)
             {
@@ -98,12 +91,19 @@ namespace RFID_POC
                         if (uid.ToString() == "28723002")
                         {
                             setGreenLight();
+                            seat_6c.Visibility = Visibility.Visible;
+                            seat_6c.Fill = greenBrush;
+                            txt6C.Visibility = Visibility.Visible;
                         }
                         else
                         {
                             setRedLight();
+                            txtCardNumber.Text = uid.ToString();
+                            seat_6c.Visibility = Visibility.Visible;
+                            seat_6c.Fill = redBrush;
+                            txt6C.Visibility = Visibility.Visible;
                         }
-                        txtCardNumber.Text = uid.ToString();
+
                         //pinValue = GpioPinValue.Low;
                         //redPin.Write(pinValue);
                         //pinValue = GpioPinValue.High;

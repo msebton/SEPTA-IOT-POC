@@ -370,8 +370,8 @@
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\Mfrc522Lib\bin\ARM\Debug\Mfrc522Lib.dll">
       <PackagePath>Mfrc522Lib.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Properties\Default.rd.xml">
-      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Assets\septa_car.png">
+      <PackagePath>Assets\septa_car.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -399,6 +399,9 @@
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\RFID_POC.xr.xml">
       <PackagePath>RFID_POC.xr.xml</PackagePath>

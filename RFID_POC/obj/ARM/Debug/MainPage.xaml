@@ -6,14 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="770">
 
     <Grid>
-        <TextBlock x:ConnectionId='2' x:Name="textBlock" Margin="0,0,1500,1000" Text="TextBlock" TextWrapping="Wrap"/>
-        <TextBlock x:ConnectionId='3' x:Name="textBlock1" Margin="0,0,1500,1000" Text="TextBlock" TextWrapping="Wrap"/>
-        <TextBlock x:ConnectionId='4' x:Name="textBlock2" Margin="0,0,1500,1000" Text="TextBlock" TextWrapping="Wrap"/>
-        <TextBlock x:ConnectionId='5' x:Name="txtCardNumber" Margin="281,270,198,676" Text="TextBlock" TextWrapping="Wrap" FontSize="32" d:LayoutOverrides="HorizontalAlignment, LeftPosition, RightPosition, TopPosition, BottomPosition" VerticalAlignment="Stretch"/>
-
+        <Grid.Background>
+            <ImageBrush Opacity="1" ImageSource="/Assets/septa_car.png" Stretch="Uniform"/>
+        </Grid.Background>
+        <TextBlock x:ConnectionId='2' x:Name="txtCardNumber" Margin="589,690,580,256" Text="TextBlock" TextWrapping="Wrap" FontSize="32" d:LayoutOverrides="HorizontalAlignment, TopPosition, BottomPosition" Width="331" HorizontalAlignment="Stretch"/>
+        <Rectangle x:ConnectionId='3' x:Name="seat_6c" Height="46" Margin="267,411,409,543" Width="94" StrokeThickness="0" d:IsHidden="True"/>
+        <TextBlock x:ConnectionId='4' x:Name="txt6C" Height="41" Margin="297,420,0,0" Text="6C" TextWrapping="Wrap" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="26.667" FontFamily="Arial" Visibility="Visible" FontWeight="Bold" FocusVisualPrimaryBrush="Black" Foreground="White" d:IsHidden="True"/>
     </Grid>
 </Page>
 
