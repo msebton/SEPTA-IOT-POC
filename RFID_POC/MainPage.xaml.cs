@@ -81,37 +81,37 @@ namespace RFID_POC
 
             await mfrc.InitIO();
 
-            while (true)
-            {
-                if (mfrc.IsTagPresent())
-                {
-                    var uid = mfrc.ReadUid();
-                    if (uid.IsValid)
-                    {
-                        if (uid.ToString() == "28723002")
-                        {
-                            setGreenLight();
-                            seat_6c.Visibility = Visibility.Visible;
-                            seat_6c.Fill = greenBrush;
-                            txt6C.Visibility = Visibility.Visible;
-                        }
-                        else
-                        {
-                            setRedLight();
-                            txtCardNumber.Text = uid.ToString();
-                            seat_6c.Visibility = Visibility.Visible;
-                            seat_6c.Fill = redBrush;
-                            txt6C.Visibility = Visibility.Visible;
-                        }
+            //while (true)
+            //{
+            //    if (mfrc.IsTagPresent())
+            //    {
+            //        var uid = mfrc.ReadUid();
+            //        if (uid.IsValid)
+            //        {
+            //            if (uid.ToString() == "28723002")
+            //            {
+            //                setGreenLight();
+            //                seat_6c.Visibility = Visibility.Visible;
+            //                seat_6c.Fill = greenBrush;
+            //                txt6C.Visibility = Visibility.Visible;
+            //            }
+            //            else
+            //            {
+            //                setRedLight();
+            //                txtCardNumber.Text = uid.ToString();
+            //                seat_6c.Visibility = Visibility.Visible;
+            //                seat_6c.Fill = redBrush;
+            //                txt6C.Visibility = Visibility.Visible;
+            //            }
 
-                        //pinValue = GpioPinValue.Low;
-                        //redPin.Write(pinValue);
-                        //pinValue = GpioPinValue.High;
-                        //greenPin.Write(pinValue);
-                    }
-                    mfrc.HaltTag();
-                }
-            }
+            //            //pinValue = GpioPinValue.Low;
+            //            //redPin.Write(pinValue);
+            //            //pinValue = GpioPinValue.High;
+            //            //greenPin.Write(pinValue);
+            //        }
+            //        mfrc.HaltTag();
+            //    }
+            //}
         }
 
         private void setRedLight()
