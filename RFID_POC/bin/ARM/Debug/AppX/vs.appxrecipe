@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-11-27T18:12:08.304</Modified>
+      <Modified>2018-11-28T03:57:30.631</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\RFID_POC.exe">
       <PackagePath>entrypoint\RFID_POC.exe</PackagePath>
-      <Modified>2018-11-27T18:12:07.154</Modified>
+      <Modified>2018-11-28T03:57:29.558</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\microsoft.csharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -542,11 +542,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2018-11-27T18:12:06.914</Modified>
+      <Modified>2018-11-28T03:57:29.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2018-11-27T18:12:06.915</Modified>
+      <Modified>2018-11-28T03:57:29.207</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.17763.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
@@ -562,7 +562,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Mark\Source\Repos\RFID_POC\RFID_POC\bin\ARM\Debug\Core\RFID_POC.exe">
       <PackagePath>RFID_POC.exe</PackagePath>
-      <Modified>2018-11-27T18:12:08.299</Modified>
+      <Modified>2018-11-28T03:57:30.626</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

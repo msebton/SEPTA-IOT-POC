@@ -16,8 +16,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Mfrc522Lib;
-//using Microsoft.SPOT.Hardware;
-//using SecretLabs.NETMF.Hardware.NetduinoPlus;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -28,11 +26,16 @@ namespace RFID_POC
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private GpioController gpio;
+        private DispatcherTimer timer;
         private const int RED_LED_PIN = 5;
         private const int GREEN_LED_PIN = 12;
+        private SolidColorBrush redBrush = new SolidColorBrush(Windows.UI.Colors.Red);
+        private SolidColorBrush greenBrush = new SolidColorBrush(Windows.UI.Colors.Green);
         private GpioPin redPin;
         private GpioPin greenPin;
         private GpioPinValue pinValue;
+        private Mfrc522 mfrc;
 
         public MainPage()
         {
@@ -40,13 +43,12 @@ namespace RFID_POC
 
             InitGPIO();
 
-            InitRC522Async();
-            //MainAsync().GetAwaiter().GetResult();
+            SetupMfrcDevice();
         }
 
         private void InitGPIO()
         {
-            var gpio = GpioController.GetDefault();
+            gpio = GpioController.GetDefault();
 
             // Show an error if there is no GPIO controller
             if (gpio == null)
@@ -55,6 +57,12 @@ namespace RFID_POC
                 txtCardNumber.Text = "There is no GPIO controller on this device.";
                 return;
             }
+        }
+
+        public async void SetupMfrcDevice()
+        {
+            mfrc = new Mfrc522();
+            await mfrc.InitIO();
 
             // red LED
             redPin = gpio.OpenPin(RED_LED_PIN);
@@ -70,48 +78,38 @@ namespace RFID_POC
 
             txtCardNumber.Text = "GPIO pin initialized correctly.";
 
+            // set the timer
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(250);
+            timer.Tick += ReadRfidCard;
+            timer.Start();
         }
 
-        public async void InitRC522Async()
+        private void ReadRfidCard(object o, object e)
         {
-
-            var mfrc = new Mfrc522();
-            var redBrush = new SolidColorBrush(Windows.UI.Colors.Red);
-            var greenBrush = new SolidColorBrush(Windows.UI.Colors.Green);
-
-            await mfrc.InitIO();
-
-            //while (true)
-            //{
-            //    if (mfrc.IsTagPresent())
-            //    {
-            //        var uid = mfrc.ReadUid();
-            //        if (uid.IsValid)
-            //        {
-            //            if (uid.ToString() == "28723002")
-            //            {
-            //                setGreenLight();
-            //                seat_6c.Visibility = Visibility.Visible;
-            //                seat_6c.Fill = greenBrush;
-            //                txt6C.Visibility = Visibility.Visible;
-            //            }
-            //            else
-            //            {
-            //                setRedLight();
-            //                txtCardNumber.Text = uid.ToString();
-            //                seat_6c.Visibility = Visibility.Visible;
-            //                seat_6c.Fill = redBrush;
-            //                txt6C.Visibility = Visibility.Visible;
-            //            }
-
-            //            //pinValue = GpioPinValue.Low;
-            //            //redPin.Write(pinValue);
-            //            //pinValue = GpioPinValue.High;
-            //            //greenPin.Write(pinValue);
-            //        }
-            //        mfrc.HaltTag();
-            //    }
-            //}
+            if (mfrc.IsTagPresent())
+            {
+                var uid = mfrc.ReadUid();
+                if (uid.IsValid)
+                {
+                    if (uid.ToString() == "28723002")
+                    {
+                        setGreenLight();
+                        seat_6c.Visibility = Visibility.Visible;
+                        seat_6c.Fill = greenBrush;
+                        txt6C.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        setRedLight();
+                        txtCardNumber.Text = uid.ToString();
+                        seat_6c.Visibility = Visibility.Visible;
+                        seat_6c.Fill = redBrush;
+                        txt6C.Visibility = Visibility.Visible;
+                    }
+                }
+                mfrc.HaltTag();
+            }
         }
 
         private void setRedLight()
