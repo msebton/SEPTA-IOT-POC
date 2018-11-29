@@ -37,6 +37,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="StrokeThickness" />
+      <RootProperty Name="Visibility" />
     </RootType>
     <RootType FullName="RFID_POC.MainPage" />
   </Roots.RootTypes>

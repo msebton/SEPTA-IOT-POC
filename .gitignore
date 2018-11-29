@@ -5,3 +5,8 @@
 /.vs/RFID_POC/v15/Server/sqlite3
 /Mfrc522Lib/bin/Debug
 /Mfrc522Lib/obj/Debug
+/SplashScreen square.psd
+/SplashScreen.scale-200.psd
+/bin/ARM/Debug
+/obj/ARM/Debug
+
