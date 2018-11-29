@@ -30,10 +30,19 @@ namespace RFID_POC
         private DispatcherTimer timer;
         private const int RED_LED_PIN = 5;
         private const int GREEN_LED_PIN = 12;
+        private const int IR_EMITTER_PIN = 17;
+        private const int IR_RECEIVER_PIN = 4;
         private SolidColorBrush redBrush = new SolidColorBrush(Windows.UI.Colors.Red);
         private SolidColorBrush greenBrush = new SolidColorBrush(Windows.UI.Colors.Green);
+        private SolidColorBrush whiteBrush = new SolidColorBrush(Windows.UI.Colors.White);
+        private SolidColorBrush blackBrush = new SolidColorBrush(Windows.UI.Colors.Black);
         private GpioPin redPin;
         private GpioPin greenPin;
+        private GpioPin emitterPin;
+        private GpioPin receiverPin;
+        bool seatOccupied = false;
+        bool validCard = false;
+
         private GpioPinValue pinValue;
         private Mfrc522 mfrc;
 
@@ -76,39 +85,109 @@ namespace RFID_POC
             pinValue = GpioPinValue.Low;
             greenPin.Write(pinValue);
 
+            // emitter IR LED - turn on IR LED
+            emitterPin = gpio.OpenPin(IR_EMITTER_PIN);
+            emitterPin.SetDriveMode(GpioPinDriveMode.Output);
+            pinValue = GpioPinValue.High;
+            emitterPin.Write(pinValue);
+
+            // receiver IR Photo LED
+            receiverPin = gpio.OpenPin(IR_RECEIVER_PIN);
+            receiverPin.SetDriveMode(GpioPinDriveMode.InputPullUp);
+
             txtCardNumber.Text = "GPIO pin initialized correctly.";
 
             // set the timer
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(250);
-            timer.Tick += ReadRfidCard;
+            timer.Tick += ReadSensors;
             timer.Start();
         }
 
-        private void ReadRfidCard(object o, object e)
+        private void ReadSensors(object o, object e)
         {
+            Uid uid = null;
+
+            // start with a vacant seat
+            setVacantSeat();
+
+            // RFID Card (MFRC522)
             if (mfrc.IsTagPresent())
             {
-                var uid = mfrc.ReadUid();
+                uid = mfrc.ReadUid();
                 if (uid.IsValid)
                 {
                     if (uid.ToString() == "28723002")
                     {
+                        validCard = true;
                         setGreenLight();
-                        seat_6c.Visibility = Visibility.Visible;
-                        seat_6c.Fill = greenBrush;
-                        txt6C.Visibility = Visibility.Visible;
+                        setValidSeat();
                     }
                     else
                     {
+                        validCard = false;
                         setRedLight();
-                        txtCardNumber.Text = uid.ToString();
-                        seat_6c.Visibility = Visibility.Visible;
-                        seat_6c.Fill = redBrush;
-                        txt6C.Visibility = Visibility.Visible;
+                        setInvalidSeat();
                     }
                 }
                 mfrc.HaltTag();
+            }
+
+            // IR Receiver
+            var receiverValue = receiverPin.Read();
+            if (receiverValue == GpioPinValue.High) // seat is occupied
+            {
+                seatOccupied = true;
+            }
+            else // seat is vacant
+            {
+                seatOccupied = false;
+                validCard = false;
+                setVacantSeat();
+            }
+
+            if (!seatOccupied)
+            {
+                setVacantSeat();
+            }
+            else if (seatOccupied && !validCard)
+            {
+                setInvalidSeat();
+            }
+            else if (seatOccupied && validCard)
+            {
+                setValidSeat();
+            }
+
+        }
+
+        private void setVacantSeat()
+        {
+            if (seat_6c.Fill != null)
+            {
+                seat_6c.Visibility = Visibility.Visible;
+                seat_6c.Fill = whiteBrush;
+                txt6C.Foreground = blackBrush;
+                txt6C.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void setValidSeat()
+        {
+            seat_6c.Visibility = Visibility.Visible;
+            seat_6c.Fill = greenBrush;
+            txt6C.Foreground = whiteBrush;
+            txt6C.Visibility = Visibility.Visible;
+        }
+
+        private void setInvalidSeat()
+        {
+            if (seat_6c.Fill != greenBrush)
+            {
+                seat_6c.Visibility = Visibility.Visible;
+                seat_6c.Fill = redBrush;
+                txt6C.Foreground = whiteBrush;
+                txt6C.Visibility = Visibility.Visible; 
             }
         }
 

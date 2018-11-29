@@ -13,7 +13,7 @@
             <ImageBrush Opacity="1" ImageSource="/Assets/septa_car.png" Stretch="Uniform"/>
         </Grid.Background>
         <TextBlock x:Name="txtCardNumber" Margin="231,690,208,256" Text="TextBlock" TextWrapping="Wrap" FontSize="32" d:LayoutOverrides="HorizontalAlignment, TopPosition, BottomPosition" Width="331" HorizontalAlignment="Stretch"/>
-        <Rectangle x:Name="seat_6c" Height="46" Margin="260,405,409,543" Width="94" StrokeThickness="2" Visibility="Collapsed" />
+        <Rectangle x:Name="seat_6c" Height="46" Margin="260,405,409,543" Width="94" StrokeThickness="0" Visibility="Collapsed" />
         <TextBlock x:Name="txt6C" Height="41" Margin="295,443,0,0" Text="6C" TextWrapping="Wrap" Width="42" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="26.667" FontFamily="Arial" Visibility="Collapsed" FontWeight="Bold" FocusVisualPrimaryBrush="Black" Foreground="White" />
     </Grid>
 </Page>
